@@ -1,4 +1,5 @@
 { lib, pkgs, config, ... }: {
+  _class = "user";
 
   imports = [
     ./python.nix
@@ -25,8 +26,8 @@
       export PATH=${lib.makeBinPath config.packages}:$PATH
     '';
 
-    activationScript = pkgs.writeShellScriptBin "activate-shell" ''
-      exec bash --rcfile ${config.shellInit} -i
+    activationScript = pkgs.writeShellScriptBin "activate-user" ''
+      ln -sfv ${config.shellInit} ~/.zshrc
     '';
   };
 }
