@@ -5,6 +5,8 @@
   ];
 
   config = {
+    python = true;
+
     packages = [
       pkgs.fortune
       pkgs.cowsay

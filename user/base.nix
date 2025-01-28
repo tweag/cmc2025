@@ -1,5 +1,9 @@
 { lib, pkgs, config, ... }: {
 
+  imports = [
+    ./python.nix
+  ];
+
   options = {
     packages = lib.mkOption {
       type = lib.types.listOf lib.types.package;
