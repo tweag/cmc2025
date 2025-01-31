@@ -2,6 +2,11 @@
   _class = "host";
 
   options = {
+    etc = lib.mkOption {
+      type = lib.types.attrsOf lib.types.package;
+      default = { };
+    };
+
     users = lib.mkOption {
       type = lib.types.attrsOf
         (lib.types.submodule ../user/base.nix);
@@ -15,6 +20,11 @@
 
   config = {
     activationScript = pkgs.writeShellScriptBin "activate-host" ''
+      echo "Setting up /etc"
+      ${lib.concatMapAttrsStringSep "\n" (file: pkg: ''
+        sudo ln -sfv ${pkg} /etc/${file}
+      '') config.etc}
+
       ${lib.concatMapAttrsStringSep "\n" (user: cfg: ''
         echo "Setting up user ${user}"
         sudo useradd --create-home ${user}

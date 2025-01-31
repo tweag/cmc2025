@@ -5,6 +5,10 @@
   ];
 
   config = {
+    etc."motd" = pkgs.writeText "hostname" ''
+      Welcome to this machine!
+    '';
+
     users."neo" = {
       packages = [
         pkgs.cmatrix
