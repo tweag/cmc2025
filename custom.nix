@@ -5,6 +5,12 @@
   ];
 
   config = {
+    users."neo" = {
+      packages = [
+        pkgs.cmatrix
+      ];
+    };
+
     users."infinisil" = {
       # Evaluated with ./user/base.nix
 
