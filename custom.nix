@@ -5,9 +5,10 @@
   ];
 
   config = {
-    etc."motd" = pkgs.writeText "hostname" ''
-      Welcome to this machine!
-    '';
+    devs = [
+      "infinisil"
+      "neo"
+    ];
 
     users."neo" = {
       packages = [
@@ -17,8 +18,6 @@
 
     users."infinisil" = {
       # Evaluated with ./user/base.nix
-
-      python = true;
 
       packages = [
         pkgs.fortune

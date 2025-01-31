@@ -1,6 +1,10 @@
 { lib, pkgs, config, ... }: {
   _class = "host";
 
+  imports = [
+    ./devs.nix
+  ];
+
   options = {
     etc = lib.mkOption {
       type = lib.types.attrsOf lib.types.package;
