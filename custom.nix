@@ -1,16 +1,20 @@
 { lib, pkgs, config, ... }: {
 
   imports = [
-    ./user/base.nix
+    ./host/base.nix
   ];
 
   config = {
-    python = true;
+    users."infinisil" = {
+      # Evaluated with ./user/base.nix
 
-    packages = [
-      pkgs.fortune
-      pkgs.cowsay
-    ];
+      python = true;
+
+      packages = [
+        pkgs.fortune
+        pkgs.cowsay
+      ];
+    };
   };
 
 }
