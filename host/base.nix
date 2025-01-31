@@ -17,6 +17,10 @@
       default = { };
     };
 
+    ip = lib.mkOption {
+      type = lib.types.str;
+    };
+
     activationScript = lib.mkOption {
       type = lib.types.package;
     };

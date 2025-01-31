@@ -1,28 +1,32 @@
 { lib, pkgs, config, ... }: {
 
   imports = [
-    ./host/base.nix
+    ./fleet/base.nix
   ];
 
   config = {
-    devs = [
-      "infinisil"
-      "neo"
-    ];
+    hosts."tweag" = {
+      # Evaluated with ./host/base.nix
+      ip = "192.168.1.1";
 
-    users."neo" = {
-      packages = [
-        pkgs.cmatrix
+      devs = [
+        "infinisil"
+        "neo"
       ];
-    };
 
-    users."infinisil" = {
-      # Evaluated with ./user/base.nix
+      users."neo" = {
+        packages = [
+          pkgs.cmatrix
+        ];
+      };
 
-      packages = [
-        pkgs.fortune
-        pkgs.cowsay
-      ];
+      users."infinisil" = {
+        # Evaluated with ./user/base.nix
+        packages = [
+          pkgs.fortune
+          pkgs.cowsay
+        ];
+      };
     };
   };
 
