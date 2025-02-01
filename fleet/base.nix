@@ -1,6 +1,10 @@
 { lib, pkgs, config, ... }: {
   _class = "fleet";
 
+  imports = [
+    ./network.nix
+  ];
+
   options = {
     hosts = lib.mkOption {
       type = lib.types.attrsOf

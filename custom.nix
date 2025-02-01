@@ -5,6 +5,8 @@
   ];
 
   config = {
+    network = [ "tweag" "modus" "create" ];
+
     hosts."modus" = {
       ip = "192.168.1.2";
 
